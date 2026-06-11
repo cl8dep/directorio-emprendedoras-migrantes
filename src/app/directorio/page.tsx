@@ -78,7 +78,7 @@ export default function DirectoryPage() {
       {/* Contenedor Principal (Filtros + Resultados) */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         {/* Panel de Filtros Lateral (Escritorio) */}
-        <aside className="lg:col-span-1 bg-white p-6 rounded-2xl border border-slate-200/80 h-fit sticky top-24">
+        <aside className="lg:col-span-1 bg-white p-6 rounded-2xl border border-slate-200/80 h-fit relative lg:sticky lg:top-24">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-md font-bold text-slate-950 flex items-center gap-1.5">
               <FilterAltIcon className="text-slate-500" fontSize="small" />
@@ -167,19 +167,17 @@ export default function DirectoryPage() {
 
           {/* Grilla de Resultados con AnimatePresence para animar la entrada/salida */}
           {filteredEntrepreneurs.length > 0 ? (
-            <motion.div
-              layout
+            <div
               className="grid grid-cols-1 gap-6 sm:grid-cols-2"
             >
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence>
                 {filteredEntrepreneurs.map((e) => (
                   <motion.div
                     key={e.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.25 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.2 }}
                     className="w-full"
                   >
                     <Card className="flex flex-col h-full rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -195,15 +193,15 @@ export default function DirectoryPage() {
                           <Chip
                             label={e.category}
                             size="small"
-                            className="bg-slate-900/80 backdrop-blur-sm text-white font-semibold text-xs border-none"
+                            className="bg-white/95 backdrop-blur-sm text-slate-900 font-bold text-xs border-none shadow-sm"
                           />
                         </div>
                         <div className="absolute top-3 right-3">
                           <Chip
-                            icon={<PublicIcon className="!text-teal-400 !text-sm" />}
+                            icon={<PublicIcon className="!text-teal-600 !text-sm" />}
                             label={e.origin}
                             size="small"
-                            className="bg-teal-900/95 backdrop-blur-sm text-teal-100 font-semibold text-xs border-none"
+                            className="bg-teal-50/95 backdrop-blur-sm text-teal-800 font-bold text-xs border-none shadow-sm"
                           />
                         </div>
                       </div>
