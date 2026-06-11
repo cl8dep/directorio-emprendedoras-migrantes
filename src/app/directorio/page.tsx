@@ -190,19 +190,15 @@ export default function DirectoryPage() {
                           alt={e.businessName}
                         />
                         <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
-                          <Chip
-                            label={e.category}
-                            size="small"
-                            className="bg-white/95 backdrop-blur-sm text-slate-900 font-bold text-xs border-none shadow-sm"
-                          />
+                          <span className="inline-flex items-center rounded-full bg-white/95 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-slate-900 shadow-sm border border-slate-200/20">
+                            {e.category}
+                          </span>
                         </div>
                         <div className="absolute top-3 right-3">
-                          <Chip
-                            icon={<PublicIcon className="!text-teal-600 !text-sm" />}
-                            label={e.origin}
-                            size="small"
-                            className="bg-teal-50/95 backdrop-blur-sm text-teal-800 font-bold text-xs border-none shadow-sm"
-                          />
+                          <span className="inline-flex items-center gap-1 rounded-full bg-teal-50/95 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-teal-800 shadow-sm border border-teal-100/30">
+                            <PublicIcon className="text-teal-600 !text-sm" />
+                            {e.origin}
+                          </span>
                         </div>
                       </div>
 
@@ -253,7 +249,7 @@ export default function DirectoryPage() {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ) : (
             <motion.div
               initial={{ opacity: 0 }}
